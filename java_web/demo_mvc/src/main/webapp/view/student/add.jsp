@@ -20,15 +20,6 @@
                     <form action="/student?action=add" method="post">
 
                         <div class="mb-3">
-                            <label class="form-label">Id</label>
-                            <input
-                                    type="text"
-                                    class="form-control"
-                                    name="id"
-                                    placeholder="Nhập id">
-                        </div>
-
-                        <div class="mb-3">
                             <label class="form-label">Tên</label>
                             <input
                                     type="text"
