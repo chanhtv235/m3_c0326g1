@@ -28,6 +28,7 @@
         <th>Giới tính</th>
         <th>Điểm</th>
         <th>Xếp loại</th>
+        <th>Class name</th>
         <th>Xoá</th>
     </tr>
     <c:forEach var="student" items="${studentList}" varStatus="status">
@@ -61,11 +62,43 @@
                 </c:choose>
             </td>
             <td>
-                <button class="btn btn-sm btn-danger">Xoá</button>
+                ${student.className}
+            </td>
+            <td>
+                <button onclick="getInfoDelete('${student.id}','${student.name}')" type="button" class="btn btn-sm btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                   Xoá
+                </button>
             </td>
         </tr>
     </c:forEach>
 </table>
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <form action="/student?action=delete" method="post">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <input hidden="hidden" name="deleteId" id="deleteId">
+                    <span>Bạn có muốn xoá sinh viên </span> <span class="text-danger" id="deleteName"></span> <span>không?</span>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Huỷ</button>
+                    <button type="submit" class="btn btn-primary">Xoá</button>
+                </div>
+            </form>
 
+        </div>
+    </div>
+</div>
+<script>
+    function getInfoDelete(id,name){
+      document.getElementById("deleteName").innerHTML = name;
+      document.getElementById("deleteId").value = id;
+    }
+</script>
 </body>
 </html>

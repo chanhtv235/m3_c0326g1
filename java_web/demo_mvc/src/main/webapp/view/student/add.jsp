@@ -65,6 +65,16 @@
                                     placeholder="Nhập điểm">
                         </div>
 
+                        <div class="mb-4">
+                            <label class="form-label">Class name</label>
+                            <select name="classId">
+                                <option class="">----Chon-----</option>
+                                <c:forEach items="${classList}" var="cls">
+                                    <option value="${cls.id}">${cls.name}</option>
+                                </c:forEach>
+                            </select>
+                        </div>
+
                         <div class="d-grid">
                             <button type="submit" class="btn btn-primary">
                                 Lưu
